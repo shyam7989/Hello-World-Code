@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: my-deployment-recreate
+spec:
+ template:
+  metadata:
+   name: my-pod
+   labels:
+    name: nginxpod
+    type: frontend
+  spec:
+   containers:
+   - name: nginx-container
+     image: nginx:1.19
+ replicas: 2
+ strategy:
+  type: Recreate
+ selector:
+  matchLabels:
+   name: nginxpod
+   type: frontend
+
