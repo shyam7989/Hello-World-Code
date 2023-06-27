@@ -11,10 +11,10 @@ spec:
   metadata:
    labels:
     app: my-app
- spec:
-  containers:
-  - name: my-app
-    image: docker.io/goudsagar/webapp-app-tomcat:latest
-    imagePullPolicy: IfNotPresent
-    ports:
-    - containerPort: 8080
+  spec:
+   containers:
+   - name: my-app
+     image: docker.io/goudsagar/webapp-app-tomcat:latest
+     imagePullPolicy: IfNotPresent
+     ports:
+     - containerPort: 8080
