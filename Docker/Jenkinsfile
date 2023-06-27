@@ -65,8 +65,9 @@ pipeline{
            steps{
                script {
                    withDockerRegistry(credentialsId: 'docker-credentials') {
+		      sh "cd ${WORKSPACE}/Docker"
                       sh "docker build -t goudsagar/webapp-app-tomcat:latest ."
-                      sh " docker push"
+                      sh "docker push"
                        }
                     }
               }
