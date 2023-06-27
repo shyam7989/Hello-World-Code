@@ -45,11 +45,11 @@ pipeline{
                    nexusArtifactUploader(
                    nexusVersion: 'nexus3',
                    protocol: 'http',
-                   nexusUrl: '18.117.164.89:8081',
+                   nexusUrl: '3.142.153.168:8081',
                    groupId: 'MY-POC',
                    version: '1.0-SNAPSHOT',
                    repository: 'maven-snapshots',
-                   credentialsId: 'nexus-pass',
+                   credentialsId: 'nexus-credentials',
                        artifacts: [
                          [artifactId: 'POC-CI-CD',
                          type: 'war',
@@ -62,7 +62,7 @@ pipeline{
         stage ('Tomcat Deployment') {
            steps {
              script {
-                 deploy adapters: [tomcat9(credentialsId: 'tomcat-pass', path: '', url: 'http://18.118.167.237:8080')], contextPath: '/pipeline', onFailure: false, war: 'webapp/target/webapp.war' 
+                 deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://18.119.131.55:8080')], contextPath: '/webapp-app', onFailure: false, war: 'webapp/target/webapp.war' 
                     }
                   }
            }
