@@ -17,6 +17,7 @@ pipeline{
             steps{
                sh '''
                 mvn package
+		cp -r webapp/target/webapp.war ${WORKSPACE}/Docker/
                 '''
             }
         }
