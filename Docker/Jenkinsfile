@@ -71,5 +71,12 @@ pipeline{
                     }
               }
           }
+	stage('Deploying web application container to Kubernetes') {
+           steps {
+              script {
+                  kubernetesDeploy(configs: "Docker/deployment.yaml", "Docker/service.yaml")
+                 }
+             }
+          }
      }
 }
