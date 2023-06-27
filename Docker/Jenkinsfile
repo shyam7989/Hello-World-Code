@@ -76,9 +76,9 @@ pipeline{
 	       sh '''
 	         pwd
 	         ls -lrt 
-                 /bin/kubectl apply -f Docker/deployment.yaml
+                 /bin/kubectl create -f Docker/deployment.yaml
                  sleep 10
-		 /bin/kubectl apply -f Docker/service.yaml
+		 /bin/kubectl create -f Docker/service.yaml
                 '''
                  }
              }
