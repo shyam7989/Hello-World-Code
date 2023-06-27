@@ -74,9 +74,11 @@ pipeline{
 	stage('Deploying web application container to Kubernetes') {
            steps {
 	       sh '''
-                 /bin/kubectl apply -f deployment.yaml
+	         pwd
+	         ls -lrt 
+                 /bin/kubectl apply -f Docker/deployment.yaml
                  sleep 10
-		 /bin/kubectl apply -f service.yaml
+		 /bin/kubectl apply -f Docker/service.yaml
                 '''
                  }
              }
