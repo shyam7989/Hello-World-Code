@@ -10,6 +10,6 @@ RUN mv apache-tomcat-8.5.40/* /opt/tomcat/
 RUN yum -y install java-1.8.0*
 RUN java -version
 WORKDIR /opt/tomcat/webapps
-COPY webapp.war .
+COPY ./webapp.war /opt/tomcat/webapps/
 EXPOSE 8080
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
