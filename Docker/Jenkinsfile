@@ -74,7 +74,7 @@ pipeline{
 	stage('Deploying web application container to Kubernetes') {
            steps {
 	       sh '''
-	        cp -rp /var/lib/jenkins/kubectl ${WORSPSACE}/
+	        cp -rp /var/lib/jenkins/kubectl ${WORKPSACE}/
                   ./kubectl create -f ./Docker/deployment.yaml
                  sleep 10
 		  ./kubectl create -f ./Docker/service.yaml
