@@ -76,6 +76,7 @@ pipeline{
 	       sh '''
 	         pwd
 	         ls -lrt 
+	          /usr/local/bin/kubectl version --client
                  /bin/kubectl create -f Docker/deployment.yaml
                  sleep 10
 		 /bin/kubectl create -f Docker/service.yaml
