@@ -1,6 +1,10 @@
 
 pipeline{
-    agent any
+    agent {
+      node {
+        label 'jenkins-slave'
+      }
+    }
 
     tools {
          maven 'MAVEN_HOME'
@@ -8,7 +12,8 @@ pipeline{
     }
 
     stages{
-        stage('Git Checkout'){
+	    
+/*        stage('Git Checkout'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github access', url: 'https://github.com/GoudSagar/Hello-World-Code.git']]])
             }
@@ -70,14 +75,13 @@ pipeline{
                        }
                     }
               }
-          }
+          }  */
 	stage('Deploying web application container to Kubernetes') {
            steps {
 	       sh '''
-	        cp -rp /var/lib/jenkins/kubectl ${WORKPSACE}/
-                  ./kubectl create -f ./Docker/deployment.yaml
-                 sleep 10
-		  ./kubectl create -f ./Docker/service.yaml
+                  kubectl create -f  Docker/deployment.yaml
+                  sleep 10
+		  kubectl create -f Docker/service.yaml
                 '''
                  }
              }
