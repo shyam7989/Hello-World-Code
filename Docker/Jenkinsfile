@@ -20,9 +20,9 @@ pipeline{
 	stage('Deploying web application container to Kubernetes') {
            steps {
 	       sh '''
-                  kubectl create -f  Docker/deployment.yaml
+                  kubectl apply -f  Docker/deployment.yaml
                   sleep 10
-		  kubectl create -f Docker/service.yaml
+		  kubectl apply -f Docker/service.yaml
                 '''
                  }
              }
