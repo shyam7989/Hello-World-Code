@@ -12,6 +12,11 @@ pipeline{
     }
 
     stages{
+       stage('Git Checkout'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github access', url: 'https://github.com/GoudSagar/Hello-World-Code.git']]])
+            }
+        }
 	stage('Deploying web application container to Kubernetes') {
            steps {
 	       sh '''
