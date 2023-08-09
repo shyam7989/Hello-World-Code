@@ -1,0 +1,15 @@
+
+- hosts: all
+  vars:
+   sur: 
+        - Vasudevamurthy
+        - Niranjan
+  tasks:
+    - name: Status of APACHE
+      shell: pgrep httpd
+      ignore_errors: yes
+      changed_when: false
+      register: service_apache_status
+    - name: restart httpd if running
+      service: name=httpd state=restarted
+      when: "service_apache_status.rc != 0"

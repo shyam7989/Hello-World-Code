@@ -1,0 +1,21 @@
+---
+- name: Pre , Post tasks and Tags example
+  hosts: webservers
+  become: true
+  tags:
+     - niranjan
+  pre_tasks:
+  - debug: msg="Started task with tag"
+  tasks:
+  - name: Going to execute the main task
+    debug: msg="Currently in the target server"
+  post_tasks:
+  - debug: msg="Completed task with tag - niranjan"
+
+- name: Play without tags
+  hosts: webservers
+  become: true
+  tasks:
+  - name: Command to list files
+    shell: ls -lrt > niranjans.txt
+ 

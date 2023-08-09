@@ -1,0 +1,7 @@
+---
+# vars file for tomcat
+
+tomcat_user: admin
+tomcat_pwd: admin
+nexus_user: admin
+nexus_pwd: admin123

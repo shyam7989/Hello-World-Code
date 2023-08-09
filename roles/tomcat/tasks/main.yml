@@ -1,0 +1,6 @@
+---
+# tasks files for tomcat
+- import_tasks: stop_app.yml
+- import_tasks: uninstall_app.yml
+- import_tasks: deploy_app.yml
+- import_tasks: start_app.yml

@@ -1,0 +1,23 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Download Maven
+    get_url: url=http://www-us.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz dest=/opt/JDK/apache-maven-3.5.4-bin.tar.gz
+  - name: change gzip to tar
+    command: gunzip /opt/JDK/apache-maven-3.5.4-bin.tar.gz
+  - name: Extract Maven
+    command: tar xvf /opt/JDK/apache-maven-3.5.4-bin.tar -C /opt/JDK
+  - name: Move to a smaller directory
+    command: mv /opt/JDK/apache-maven-3.5.4 /opt/JDK/maven
+  - name: Update Profile
+    copy: content="export M2_HOME=/opt/JDK/maven \n" dest=/etc/profile.d/maven.sh
+  # lineinfile is used to add additional or append lines to existing files.
+  - lineinfile:
+     path: /etc/profile.d/maven.sh
+     line: 'export PATH=${M2_HOME}/bin:${PATH}'
+  - name: Source profile
+    shell: "{{item}}"
+    with_items: 
+          - source /etc/profile.d/maven.sh
+          - mvn --version

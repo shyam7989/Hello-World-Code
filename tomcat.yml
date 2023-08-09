@@ -1,0 +1,20 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Download Tomcat
+    get_url: url=https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/apache-tomcat-7.0.109.tar.gz dest=/home/ansible
+
+  - name: Extract the file downloaded tomcat file
+    command: tar xvf apache-tomcat-7.0.109.tar.gz
+ 
+  - name: Move the Tomcat directory to a smaller one
+    command: mv apache-tomcat-7.0.109 tomcat
+  
+  - name: Change Ownership and group of the Tomcat directory
+    file: path=/home/ansible/tomcat owner=ansible group=ansible mode=775 state=directory recurse=yes
+ 
+  - name: Start Tomcat
+    command: nohup /home/ansible/tomcat/bin/startup.sh # Execute command even after you have exited from the shell prompt
+    become: true
+    become_user: ansible

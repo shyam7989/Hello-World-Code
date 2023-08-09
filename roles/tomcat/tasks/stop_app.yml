@@ -1,0 +1,6 @@
+---
+- name: Gather EC2 instance metadata
+  action: ec2_metadata_facts
+
+- name: Stop application on {{ansible_hostname}}
+  command: wget "http://{{tomcat_user}}:{{tomcat_pwd}}@{{ansible_ec2_public_ipv4}}:8090/manager/text/stop?path=/AntProject"  -O - -q

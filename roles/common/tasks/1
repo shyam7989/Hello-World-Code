@@ -1,0 +1,12 @@
+- hosts: all
+  vars:
+   sur: 
+        - Vasudevamurthy
+        - Niranjan
+  tasks:
+    - name: Install Package
+      service: name=httpd state=started
+      register: reg_output
+    - debug:
+       msg: "{{ reg_output.stdout }}"
+   
