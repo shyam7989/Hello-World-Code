@@ -1,6 +1,6 @@
 ---
 - hosts: webservers
   become: true
-  remote_user: ansible
+  remote_user: jenkins
   roles:
   - tomcat
