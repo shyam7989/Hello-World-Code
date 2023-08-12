@@ -64,16 +64,7 @@ pipeline{
                    )
                }
           }
-          stage('Docker Build and Push') {
-           steps{
-               script {
-                   withDockerRegistry(credentialsId: 'docker-credentials') {
-                      sh "docker build -t goudsagar/webapp-app-tomcat:latest -f Docker/Dockerfile ."
-                      sh "docker push goudsagar/webapp-app-tomcat:latest"
-                       }
-                    }
-              }
-          } 
+
 
           
      }
