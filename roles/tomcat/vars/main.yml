@@ -1,8 +1,8 @@
 ---
 # vars file for tomcat
 
-tomcat_user: admi
+tomcat_user: admin
 tomcat_pwd: admin
 nexus_user: admin
 nexus_pwd: admin123
-ansible_ec2_public_ipv4: 3.128.204.5
+ansible_ec2_public_ipv4: 18.224.52.84
