@@ -5,4 +5,4 @@ tomcat_user: admin
 tomcat_pwd: admin
 nexus_user: admin
 nexus_pwd: admin
-ansible_ec2_public_ipv4: 13.234.78.29
+ansible_ec2_public_ipv4: 65.0.102.129
