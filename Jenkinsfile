@@ -11,6 +11,13 @@ pipeline{
     }
 
     stages{
+        stage('pre-build step') {
+            steps {
+		sh '''
+                echo "Pre Build Step"
+		'''
+	    }
+	}
         stage('Git Checkout'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github access', url: 'https://github.com/GoudSagar/Hello-World-Code.git']]])
@@ -70,6 +77,13 @@ pipeline{
                     }
                   }
            }
+         stage('post-build step') {
+            steps {
+		sh '''
+                echo "Post Build Step"
+		'''
+	    }
+	}
     
      }
 }
